@@ -2,19 +2,19 @@
 
 This repository contains *Webster's Unabridged English Dictionary* (from the [Gutenberg Project](www.gutenberg.net)) in several formats:
 
-- Original text file: **WebstersEnglishDictionary.txt**
-- JSON file (compact, reduced whitespace) : **dictionary_compact.json**
-- JSON file (includes linebreaks, slightly more readable):  **dictionary.json**
-- JSON file as array of 26 sorted dictionaries (A-Z): **dictionary_alpha_arrays.json**
+| Format | File |
+| --- | --- |
+| Original dictionary text file |**WebstersEnglishDictionary.txt** |
+| JSON file (compact, reduced whitespace) | **dictionary_compact.json** |
+| JSON file (includes linebreaks, slightly more readable) | **dictionary.json** |
+| JSON file as array of 26 dictionaries (A-Z) | **dictionary_alpha_arrays.json** |
 
-Its purpose is to fix a few problems with the Webster's English Dictionary JSON files from [adambom/dictionary](https://github.com/adambom/dictionary), and also provide a parsing utility for the original dictionary file which is written in [Swift](http://www.apple.com/swift/).
-
-It also includes the [Swift](http://www.apple.com/swift/) code for a command line utility which does the work of parsing and processing the original dictionary text file into Swift objects which are then serialized using `JSONSerialization`. This code is what generates the included JSON files.
+It aims to improve upon the output of similar projects such as [adambom/dictionary](https://github.com/adambom/dictionary), and also provide a parsing utility written in [Swift](http://www.apple.com/swift/), which converts the original dictionary definitions into Swift objects which are then serialized using `JSONSerialization`.
 
 ## Notes
 
-- If you only wish to make use of the Webster's English dictionary as JSON, you do not need to run the Xcode project or command line tool. Simply download one of the included JSON files
-- If you are looking for basic dictionary utilities and developing for Mac or iOS, be sure to look at Apple's `DictionaryServices` framework. This project is intended for more specific utilities that wish to make direct use of dictionary entries outside of such frameworks
+- If you only wish to use the dictionary JSON files, you do not need to run the Xcode project or command line tool, simply download one or more of the above files
+- If you are developing for Mac or iOS, be sure to look at Apple's `DictionaryServices` framework. The files here are intended for projects that wish to make direct use of the standard English dictionary outside of such frameworks
 
 ## Usage (Command Line Utility)
 
@@ -29,7 +29,7 @@ Example: `./WebstersEnglishDictionary WebstersEnglishDictionary.txt ~/Documents/
 
 ## Acknowledgments
 
-- This project was created to address a couple issues with the original repository and Julia script provided by [https://github.com/adambom/dictionary](https://github.com/adambom/dictionary)
+- Original repository and Julia script provided by [https://github.com/adambom/dictionary](https://github.com/adambom/dictionary)
 - Webster's Unabridged English Dictionary provided by [Project Gutenberg](http://www.gutenberg.net/)
 
 
