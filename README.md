@@ -1,6 +1,6 @@
 # Webster's Unabridged English Dictionary
 
-This repository contains *Webster's Unabridged English Dictionary* (from the [Gutenberg Project](www.gutenberg.net)) in several formats:
+This repository contains *Webster's Unabridged English Dictionary* (from the [Gutenberg Project](https://www.gutenberg.org/)) in several formats:
 
 | Format | File |
 | --- | --- |
