@@ -1,5 +1,13 @@
-import requests
 import pickle
+import requests
+from requests.adapters import HTTPAdapter
+from requests.packages.urllib3.util.retry import Retry
+
+# https://www.instagram.com/{username}/?__a=1
+url = 'https://www.instagram.com/'
+retries = Retry(total=5,
+                backoff_factor=1,
+                status_forcelist=[ 500, 502, 503, 504 ])
 
 def check_availability(username:str):
     '''
@@ -7,20 +15,17 @@ def check_availability(username:str):
     If a 200 response is returned, the username is taken.
     Otherwise, if a 404 reponse is returned, the username is available.
     '''
-    # https://www.instagram.com/{username}/?__a=1
     webpage = 'https://www.instagram.com/{}/?__a=1'.format(username)
-    response = requests.get(webpage)
+
+    sess = requests.Session()
+    sess.mount(url, HTTPAdapter(max_retries=retries))
+    response = sess.get(webpage)
     status = response.status_code
 
     if status == 404:
         return True
     elif status == 200:
         return False
-    else:
-        # TODO: In future, we'd want to handle other
-        # error codes properly as well.
-        print(status)
-        raise ValueError
 
 def unpickle_wordlist(path):
     with open(path, 'rb') as fd:
