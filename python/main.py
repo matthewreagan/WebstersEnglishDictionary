@@ -1,5 +1,4 @@
 import os
-import pandas as pd
 import multiprocessing as mp
 from tqdm import tqdm
 from utils import check_availability, unpickle_wordlist
