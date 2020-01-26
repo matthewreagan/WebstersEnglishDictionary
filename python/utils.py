@@ -24,7 +24,7 @@ def check_availability(username:str):
 
     if status == 404:
         return True
-    elif status == 200:
+    elif status in [200, 302]:
         return False
 
 def unpickle_wordlist(path):
