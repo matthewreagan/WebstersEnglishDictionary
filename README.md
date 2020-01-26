@@ -2,7 +2,7 @@
 
 A simple scraping project to identify available single-word usernames on Instagram.
 
-A JSON version of [*Webster's Unabridged English Dictionary*](https://www.gutenberg.org/ebooks/29765) parsed by [matthewreagan](https://github.com/matthewreagan) is used as a resource of singluar words. You can find his parsing utility on github [*here*](https://github.com/matthewreagan/WebstersEnglishDictionary)!
+A JSON version of [*Webster's Unabridged English Dictionary*](https://www.gutenberg.org/ebooks/29765) parsed by [matthewreagan](https://github.com/matthewreagan) is used as a resource of singluar words. You can find his [*parsing utility on github here*](https://github.com/matthewreagan/WebstersEnglishDictionary)!
 
 If you want to, you could replace the json dictionary with your own reference material as a resource of usernames to look up.
 
