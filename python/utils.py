@@ -5,9 +5,9 @@ from requests.packages.urllib3.util.retry import Retry
 
 # https://www.instagram.com/{username}/?__a=1
 url = 'https://www.instagram.com/'
-retries = Retry(total=5,
-                backoff_factor=1,
-                status_forcelist=[ 500, 502, 503, 504 ])
+retries = Retry(total = 9,
+                backoff_factor = 30,
+                status_forcelist = [104, 500, 502, 503, 504])
 
 def check_availability(username:str):
     '''
