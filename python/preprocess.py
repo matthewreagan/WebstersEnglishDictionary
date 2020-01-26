@@ -14,8 +14,11 @@ with open(dictionary_path) as fd:
     dictionary_dict = json.load(fd)
 
 # We're not interested in the word definitions so
-# we can throw that away.
-word_list = list(dictionary_dict.keys())
+# we can throw that away
+word_list_raw = list(dictionary_dict.keys())
+# We also remove hyphens from the list as presumably,
+# good instagram usenames do not use hypens
+word_list = [word.replace('-', '').replace(' ', '') for word in word_list_raw]
 print('Length of generatred list: {}'.format(len(word_list)))
 
 # Finally, we pickle the list of words we'd like to

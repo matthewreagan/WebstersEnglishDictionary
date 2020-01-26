@@ -1,5 +1,4 @@
 import os
-import pandas as pd
 import multiprocessing as mp
 from tqdm import tqdm
 from utils import check_availability, unpickle_wordlist
@@ -35,7 +34,7 @@ def writer(queue):
 if __name__ == "__main__":
     # Unpickle our preprocessed list of words
     word_list = unpickle_wordlist(pickle_path)
-    num_process = mp.cpu_count() + 2
+    num_process = (mp.cpu_count() // 2) + 2
     print('Running {} processes'.format(num_process))
 
     manager = mp.Manager()
