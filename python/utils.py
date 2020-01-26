@@ -1,4 +1,5 @@
 import requests
+import pickle
 
 def check_availability(username:str):
     '''
@@ -20,3 +21,8 @@ def check_availability(username:str):
         # error codes properly as well.
         print(status)
         raise ValueError
+
+def unpickle_wordlist(path):
+    with open(path, 'rb') as fd:
+        wordlist = pickle.load(fd)
+    return wordlist
