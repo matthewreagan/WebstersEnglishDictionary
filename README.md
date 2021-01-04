@@ -56,7 +56,7 @@ Same format as `dictionary.json`, with extraneous whitespace removed:
 ## Acknowledgments
 
 - Original repository and Julia script provided by [https://github.com/adambom/dictionary](https://github.com/adambom/dictionary)
-- Webster's Unabridged English Dictionary provided by [Project Gutenberg](http://www.gutenberg.net/)
+- Webster's Unabridged English Dictionary provided by [Project Gutenberg](http://www.gutenberg.org/)
 
 
 ## Author
