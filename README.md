@@ -1,5 +1,13 @@
 # Webster's Unabridged English Dictionary
 
+---
+
+## ⚠️ Important
+
+This repo is not an actively-maintained mirror for Webster's English dictionary, it is for a JSON parsing tool for the dictionary data itself. Although the repo _does_ include a copy of Webster's English dictionary, as noted below it is the 2009 version provided by the Gutenberg project and has known errors and omissions. Please visit the [Gutenberg Website](https://www.gutenberg.org/) if you wish to find the latest available version of the dictionary file.
+
+--- 
+
 This repository contains [*Webster's Unabridged English Dictionary*](https://www.gutenberg.org/ebooks/29765) (from the [Gutenberg Project](https://www.gutenberg.org/), compiled August 22, 2009) in several formats:
 
 | Format | File |
