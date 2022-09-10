@@ -67,14 +67,10 @@ let inputFilePath = arguments[1]
 let outputFilePath = arguments[2]
 let inputURL = URL.init(fileURLWithPath: inputFilePath)
 
-guard let fileText = try String.init(data: Data.init(contentsOf: inputURL), encoding: String.Encoding.utf8) else {
-    print("Couldn't read input dictionary text file")
-    
-    exit(1)
-}
+let fileText = try String.init(contentsOfFile: inputFilePath, encoding: String.Encoding.macOSRoman)
 
 /*  Set up our progress reporting state for the utility */
-let totalDictionaryLength = fileText.characters.count
+let totalDictionaryLength = fileText.count
 let progressReportStep = 5.0 //Report progress every 5%
 var lastProgressReport = 0.0
 
@@ -112,11 +108,17 @@ var compiledDictionary: [String: String] = Dictionary()
 #endif
 
 repeat {
-    didScan = scanner.scanUpTo("\r\n", into: &line)
+    let vline = scanner.scanUpToString("\r\n")
+    didScan = (vline != nil)
     
-    guard let lineText = line else {
-        continue
+    if (!didScan) {
+        finishCurrentWord()
+        break
     }
+    
+    let lineText = vline!
+    
+    line = ((vline ?? "") as NSString)
     
     func finishCurrentWord() {
         if (currentWord != nil && definition != nil) {
@@ -131,7 +133,7 @@ repeat {
                 let cleanedWord = aWord.trimmingCharacters(in: wordTrimmingCharactersSet
                     ).lowercased()
                 
-                if (cleanedWord.characters.count > 0) {
+                if (cleanedWord.count > 0) {
                     
                     /*  Avoid overwriting previously defined words, for duplicate entries. Append: */
                     
@@ -188,7 +190,7 @@ repeat {
     }
     
     func beginDefinition(text: String) {
-        let cleanedText = lineText.substring(with: NSMakeRange(5, lineText.length - 5))
+        let cleanedText = lineText.substring(with: Range(NSMakeRange(5, lineText.count - 5), in: lineText)!)
         
         continueDefinition(text: cleanedText)
     }
@@ -204,7 +206,7 @@ repeat {
     let rangeOfInvalidForWordDefinition = lineText.rangeOfCharacter(from: wordDefinitionCharacterSetInverted)
     let lineTextString  = lineText as String
     
-    if (rangeOfInvalidForWordDefinition.location == NSNotFound) {
+    if (rangeOfInvalidForWordDefinition == nil) {
         //We've hit a new word
         
         beginNewWord(word: lineTextString)
@@ -226,10 +228,6 @@ repeat {
     }
     else {
         //Discard line
-    }
-    
-    if (!didScan) {
-        finishCurrentWord()
     }
     
     let calculatedPercentComplete = 100.0 * (Double(scanner.scanLocation) / Double(totalDictionaryLength))
